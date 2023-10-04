@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  app_1:
+    image: microservice/app_1:app_1
+    volumes:
+      - ./app_1/data_1:/app_1/data
+    build:
+      context: ./app_1
+    ports:
+      - "8001:8001"
+    networks:
+      - my_network
+
+  app_2:
+    image: microservice/app_2:app_2
+    volumes:
+      - ./app_2/data_2:/app_2/data
+    build:
+      context: ./app_2
+    ports:
+      - "8002:8002"
+    networks:
+      - my_network
+
+  app_3:
+    image: microservice/app_3:app_3
+    volumes:
+      - ./app_3/data_3:/app_3/data
+    build:
+      context: ./app_3
+    ports:
+      - "8003:8003"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
